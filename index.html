@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spice Garden — Indian Restaurant Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── MOBILE NAV OVERLAY ── -->
+  <div class="nav-overlay" id="navOverlay">
+    <button class="close-btn" onclick="closeNav()">&#10005;</button>
+    <a href="#" onclick="closeNav()">Home</a>
+    <a href="#booking" onclick="closeNav()">Reserve</a>
+    <a href="#menu" onclick="closeNav()">Menu</a>
+    <a href="#gallery" onclick="closeNav()">Gallery</a>
+    <a href="#contact" onclick="closeNav()">Contact</a>
+  </div>
+
+  <!-- ── HERO SECTION ── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-noise"></div>
+
+    <nav>
+      <div class="logo">Spice <span>Garden</span></div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#booking">Reserve</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#booking" class="nav-book">Book a Table</a></li>
+      </ul>
+      <div class="hamburger" onclick="openNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-badge">&#10022; Est. 1998 &middot; Authentic Indian Cuisine &#10022;</div>
+      <h1 class="hero-title">
+        The Taste of<br>
+        <em>Incredible India</em>
+      </h1>
+      <p class="hero-sub">
+        From the royal kitchens of Rajasthan to the spice trails of Kerala — every dish tells a story of tradition, flavour and love.
+      </p>
+      <div class="hero-cta">
+        <a href="#booking" class="btn btn-gold">Reserve Your Table</a>
+        <a href="#menu" class="btn btn-outline">Explore Menu</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── STATS BAR ── -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">60k+</div>
+      <div class="stat-label">Happy Guests</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">120+</div>
+      <div class="stat-label">Menu Items</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">National Awards</div>
+    </div>
+  </div>
+
+  <!-- ── BOOKING SECTION ── -->
+  <section class="booking-section" id="booking">
+    <div class="section-tag">&#10022; Make a Reservation</div>
+    <h2 class="section-title">Reserve Your Table</h2>
+    <p class="section-sub">Book ahead and let us prepare a royal dining experience for you.</p>
+
+    <div class="booking-card">
+
+      <!-- LEFT INFO PANEL -->
+      <div class="booking-info">
+        <div class="booking-info-title">Plan Your Visit</div>
+        <div class="info-items">
+
+          <div class="info-item">
+            <div class="info-icon">&#128336;</div>
+            <div>
+              <h4>Opening Hours</h4>
+              <p>Mon &ndash; Fri: 12:00 &ndash; 23:00<br />Sat &ndash; Sun: 11:00 &ndash; 24:00</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+
+          <div class="info-item">
+            <div class="info-icon">&#128205;</div>
+            <div>
+              <h4>Location</h4>
+              <p>18 MG Road, Sector 14<br />Gurugram, Haryana 122001</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+
+          <div class="info-item">
+            <div class="info-icon">&#128222;</div>
+            <div>
+              <h4>Reservations</h4>
+              <p>+91 124 456 7890<br />book@spicegarden.in</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+
+          <div class="info-item">
+            <div class="info-icon">&#127775;</div>
+            <div>
+              <h4>Dress Code</h4>
+              <p>Smart casual. Traditional Indian attire warmly welcomed.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FORM PANEL -->
+      <div class="booking-form-wrap">
+
+        <!-- SUCCESS SCREEN -->
+        <div class="success-screen" id="successScreen">
+          <div class="success-icon">&#10003;</div>
+          <h2 class="success-title">Booking Confirmed!</h2>
+          <p class="success-sub">Your table has been reserved. A confirmation has been sent to your email address.</p>
+          <div class="booking-ref" id="bookingRef">SG-00000</div>
+          <div class="summary-card" id="successSummary"></div>
+          <button class="btn-next" style="max-width:100%;width:100%" onclick="resetForm()">Make Another Booking</button>
+        </div>
+
+        <!-- BOOKING FORM -->
+        <div id="bookingForm">
+          <p class="form-title">Complete Your Reservation</p>
+
+          <div class="form-steps">
+            <div class="step-tab active" data-step="1">&#9312; Details</div>
+            <div class="step-tab" data-step="2">&#9313; Date &amp; Time</div>
+            <div class="step-tab" data-step="3">&#9314; Table</div>
+            <div class="step-tab" data-step="4">&#9315; Confirm</div>
+          </div>
+
+          <!-- STEP 1 -->
+          <div class="form-step active" id="step1">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" placeholder="Rahul" />
+                <span class="error-msg" id="firstNameErr">Please enter your first name</span>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" placeholder="Sharma" />
+                <span class="error-msg" id="lastNameErr">Please enter your last name</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" placeholder="rahul@email.com" />
+                <span class="error-msg" id="emailErr">Please enter a valid email</span>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" placeholder="+91 98765 43210" />
+                <span class="error-msg" id="phoneErr">Please enter your phone number</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Occasion</label>
+              <div class="occasions" id="occasionPills">
+                <button class="occasion-pill" onclick="selectOccasion(this)">None</button>
+                <button class="occasion-pill" onclick="selectOccasion(this)">&#127874; Birthday</button>
+                <button class="occasion-pill" onclick="selectOccasion(this)">&#128141; Anniversary</button>
+                <button class="occasion-pill" onclick="selectOccasion(this)">&#128188; Business Lunch</button>
+                <button class="occasion-pill" onclick="selectOccasion(this)">&#127891; Graduation</button>
+                <button class="occasion-pill" onclick="selectOccasion(this)">&#128149; Date Night</button>
+                <button class="occasion-pill" onclick="selectOccasion(this)">&#127979; Family Gathering</button>
+              </div>
+            </div>
+            <div class="form-actions">
+              <span></span>
+              <button class="btn-next" onclick="goToStep(2)">Next &#8594;</button>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="form-step" id="step2">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bookDate">Date *</label>
+                <input type="date" id="bookDate" />
+                <span class="error-msg" id="dateErr">Please select a date</span>
+              </div>
+              <div class="form-group">
+                <label for="bookTime">Time *</label>
+                <select id="bookTime">
+                  <option value="">Select time</option>
+                  <option>12:00 PM</option>
+                  <option>12:30 PM</option>
+                  <option>01:00 PM</option>
+                  <option>01:30 PM</option>
+                  <option>02:00 PM</option>
+                  <option>06:30 PM</option>
+                  <option>07:00 PM</option>
+                  <option>07:30 PM</option>
+                  <option>08:00 PM</option>
+                  <option>08:30 PM</option>
+                  <option>09:00 PM</option>
+                  <option>09:30 PM</option>
+                  <option>10:00 PM</option>
+                </select>
+                <span class="error-msg" id="timeErr">Please select a time</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="guests">Number of Guests *</label>
+                <select id="guests">
+                  <option value="">Select guests</option>
+                  <option>1 Guest</option>
+                  <option>2 Guests</option>
+                  <option>3 Guests</option>
+                  <option>4 Guests</option>
+                  <option>5 Guests</option>
+                  <option>6 Guests</option>
+                  <option>7 - 8 Guests</option>
+                  <option>9 - 10 Guests</option>
+                  <option>10+ Guests (Group)</option>
+                </select>
+                <span class="error-msg" id="guestsErr">Please select guest count</span>
+              </div>
+              <div class="form-group">
+                <label for="dietPref">Dietary Preference</label>
+                <select id="dietPref">
+                  <option value="">No preference</option>
+                  <option>Pure Vegetarian</option>
+                  <option>Jain Food</option>
+                  <option>Non-Vegetarian</option>
+                  <option>Vegan</option>
+                  <option>Gluten-Free</option>
+                  <option>No Onion / No Garlic</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="requests">Special Requests</label>
+              <textarea id="requests" placeholder="Any special arrangements, dietary needs, allergy info or preferences..."></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn-back" onclick="goToStep(1)">&#8592; Back</button>
+              <button class="btn-next" onclick="goToStep(3)">Next &#8594;</button>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="form-step" id="step3">
+            <div class="form-group">
+              <label>Choose Your Table</label>
+              <p class="table-legend">&#129001; Available &nbsp;&nbsp; &#128997; Occupied</p>
+              <div class="table-grid" id="tableGrid"></div>
+              <span class="error-msg" id="tableErr">Please select a table</span>
+            </div>
+            <div class="form-actions">
+              <button class="btn-back" onclick="goToStep(2)">&#8592; Back</button>
+              <button class="btn-next" onclick="goToStep(4)">Next &#8594;</button>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="form-step" id="step4">
+            <p class="confirm-note">Please review your reservation details before confirming.</p>
+            <div class="summary-card" id="summaryCard"></div>
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="agreeTerms" />
+                I agree to the <a href="#">cancellation policy</a> and <a href="#">terms of service</a>
+              </label>
+              <span class="error-msg" id="termsErr">You must agree to the terms to continue</span>
+            </div>
+            <div class="form-actions">
+              <button class="btn-back" onclick="goToStep(3)">&#8592; Back</button>
+              <button class="btn-confirm" onclick="confirmBooking()">Confirm Reservation &#10003;</button>
+            </div>
+          </div>
+
+        </div><!-- /bookingForm -->
+      </div><!-- /booking-form-wrap -->
+    </div><!-- /booking-card -->
+  </section>
+
+  <!-- ── MENU SECTION ── -->
+  <section class="menu-section" id="menu">
+    <div class="menu-inner">
+      <div class="section-tag">&#10022; Our Cuisine</div>
+      <h2 class="section-title" style="color:#fff">Signature Menu</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin-bottom:1.5rem">
+        Authentic recipes passed down through generations, cooked with the finest Indian spices.
+      </p>
+      <div class="menu-filters">
+        <button class="filter-btn active" onclick="filterMenu(this,'all')">All</button>
+        <button class="filter-btn" onclick="filterMenu(this,'starter')">Starters</button>
+        <button class="filter-btn" onclick="filterMenu(this,'main')">Main Course</button>
+        <button class="filter-btn" onclick="filterMenu(this,'bread')">Breads</button>
+        <button class="filter-btn" onclick="filterMenu(this,'dessert')">Desserts</button>
+        <button class="filter-btn" onclick="filterMenu(this,'drinks')">Drinks</button>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY SECTION ── -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-tag">&#10022; Our Ambience</div>
+    <h2 class="section-title">A Glimpse Inside</h2>
+    <p class="section-sub">Every corner of Spice Garden is designed to reflect the warmth and grandeur of India.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-bg g1"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant Interior"></div>
+        <!-- <div class="overlay"><span>&#128269;</span></div> -->
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg g2"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Indian Food Dish"></div>
+        <!-- <div class="overlay"><span>&#128269;</span></div> -->
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg g3"><img src="https://media.gettyimages.com/id/862244366/photo/actress-sheena-marshe-forces-a-bun-on-dickie-henderson-her-co-star-in-the-show-when-in-rome.jpg?s=612x612&w=0&k=20&c=ITaOb6GQz1OZZ0yX2ao-qkqOzgWpOrU6ccC4kkNHITY=" alt="Spicy Indian Curry"></div>
+        <!-- <div class="overlay"><span>&#128269;</span></div> -->
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg g4"><img src="https://media.gettyimages.com/id/482687143/photo/actress-janet-leigh-is-shocked-at-her-husbands-eating-habits-actor-tony-curtis-at-a-black-tie.jpg?s=612x612&w=0&k=20&c=6-S17G6GD31ymeVX0f9Khq6uCJHuedQ_x5pgTIweLd4=" alt="Elegant Dining Area"></div>
+        <!-- <div class="gallery-bg g4"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elegant Dining Area"></div> -->
+        <!-- <div class="overlay"><span>&#128269;</span></div> -->
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg g5"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant Exterior"></div>
+        <!-- <div class="overlay"><span>&#128269;</span></div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="testimonials-section">
+    <div class="testimonials-inner">
+      <div class="section-tag">&#10022; Guest Reviews</div>
+      <h2 class="section-title">What Our Guests Say</h2>
+      <p class="section-sub">Real experiences from our valued guests across India.</p>
+      <div class="testimonials-grid" id="testimonialsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Spice <span>Garden</span></div>
+        <p>Award-winning Indian restaurant celebrating the rich culinary heritage of India. Bringing authentic flavours from every corner of the country.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#">Home</a>
+        <a href="#booking">Reserve a Table</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <a href="#">Mon &ndash; Fri: 12 PM &ndash; 11 PM</a>
+        <a href="#">Sat &ndash; Sun: 11 AM &ndash; 12 AM</a>
+        <a href="#">Public Holidays: 12 PM &ndash; 10 PM</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#">+91 124 456 7890</a>
+        <a href="#">book@spicegarden.in</a>
+        <a href="#">18 MG Road, Sector 14</a>
+        <a href="#">Gurugram, Haryana 122001</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Spice Garden. All rights reserved.</span>
+      <span>Privacy Policy &middot; Terms of Service</span>
+    </div>
+  </footer>
+
+  <!-- ── TOAST ── -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
